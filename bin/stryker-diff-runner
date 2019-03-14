@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+'use strict';
+
+process.title = 'stryker-diff-runner';
+
+require('../dist/index.js').default(process.argv);

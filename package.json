@@ -1,0 +1,42 @@
+{
+  "name": "stryker-diff-runner",
+  "version": "0.0.1",
+  "description": "An utility script that runs Stryker mutation testing on files diff between current git working branch and default one.",
+  "main": "dist/index.ts",
+  "bin": "bin/stryker-diff-runner",
+  "scripts": {
+    "clean": "rm -r dist",
+    "build": "npm run clean || tsc -p tsconfig.prod.json",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tverhoken/stryker-diff-runner.git"
+  },
+  "keywords": [
+    "stryker"
+  ],
+  "author": "tverhoken",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tverhoken/stryker-diff-runner/issues"
+  },
+  "homepage": "https://github.com/tverhoken/stryker-diff-runner#readme",
+  "peerDependencies": {
+    "stryker": "^0.35.1",
+    "stryker-api": "^0.24.1"
+  },
+  "dependencies": {
+    "stryker": "^0.35.1",
+    "stryker-api": "^0.24.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.11.1",
+    "jest": "^24.4.0",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  }
+}
