@@ -3,7 +3,19 @@
     "extends": [
         "tslint:recommended"
     ],
+    "linterOptions": {
+        "exclude": [
+            "bin",
+            "node_modules",
+            "jest.config.js",
+            "stryker.conf.js"
+        ]
+    },
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "no-console": false,
+        "max-line-length": [true, 160],
+        "object-literal-sort-keys": false
+    },
     "rulesDirectory": []
 }

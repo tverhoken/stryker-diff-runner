@@ -29,7 +29,7 @@ module.exports = {
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
     "/node_modules/",
-    "stryker.conf.js"
+    "stryker.conf.js",
   ],
 
   // A list of reporter names that Jest uses when writing coverage reports
@@ -64,7 +64,7 @@ module.exports = {
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [
     "node_modules",
-    "src"
+    "src",
   ],
 
   // An array of file extensions your modules use
@@ -79,7 +79,7 @@ module.exports = {
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    "@src/(.*)": "<rootDir>/src/$1"
+    "@src/(.*)": "<rootDir>/src/$1",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -169,7 +169,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.ts$": "ts-jest"
+    "^.+\\.ts$": "ts-jest",
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation

@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "node"
+
+branches:
+  except:
+    - /^v([0-9]+\.?)+/
+env:
+  - CAN_PUBLISH=$(sh ./.can-publish.sh)
+script:
+  - npm run lint
+  - npm run test
+  - npm run build
+  - if [ $TRAVIS_BRANCH == 'master' ] && [ $TRAVIS_PULL_REQUEST == 'false' ]; then npm run release; fi
+  - echo "Can publish ? $CAN_PUBLISH"
+deploy:
+  - provider: npm
+    email: "thomas.verhoken@gmail.com"
+    api_key: $NPM_TOKEN
+    on:
+      condition: "$CAN_PUBLISH = 'true'"  

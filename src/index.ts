@@ -1,38 +1,40 @@
-import { exec } from 'child_process';
-import { Config } from 'stryker-api/config';
-import Stryker from 'stryker';
-import { join } from 'path';
+import { exec } from "child_process";
+import { join } from "path";
+import Stryker from "stryker";
+import { Config } from "stryker-api/config";
 
 export default function run(commandArgs: string[]) {
-  const strykerConfPath = join(process.cwd(), 'stryker.conf.js');
+  const strykerConfPath = join(process.cwd(), "stryker.conf.js");
 
-  exec('git diff origin/master --name-only | grep -E -v \'.*\\.test.*\' | grep -e \'src/.*\\.ts\'', (error, stdout, stderr) => {
-    if (error) {
-      console.error(error.message);
-      console.error(stderr);
-      process.exit(1);
-      return;
-    }
+  exec(
+    "git diff origin/master --name-only | grep -E -v '.*\\.test.*' | grep -e 'src/.*\\.ts'",
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(error.message);
+        console.error(stderr);
+        process.exit(1);
+        return;
+      }
 
-    const args = commandArgs.slice(2);
+      const args = commandArgs.slice(2);
 
-    const filesToMutate = stdout.split('\n');
-    filesToMutate.splice(filesToMutate.length - 1, 1);
+      const filesToMutate = stdout.split("\n");
+      filesToMutate.splice(filesToMutate.length - 1, 1);
 
-    import(strykerConfPath)
-      .then(initConfig)
-      .then(applyArgumentsFromCommandLine(args))
-      .then(applyFilesToMutate(filesToMutate))
-      .then(launchStryker);
-  });
+      import(strykerConfPath)
+        .then(initConfig)
+        .then(applyArgumentsFromCommandLine(args))
+        .then(applyFilesToMutate(filesToMutate))
+        .then(launchStryker);
+    });
 }
 
 function filterExcludedFilames(fileNames: string[], matchers: string[]) {
   const exclusionMatchers = matchers
-    .filter(matcher => matcher[0] === '!')
-    .map(matcher => matcher.substr(1));
-  return fileNames.filter(fileName => (
-    exclusionMatchers.every(matcher => fileName !== matcher)
+    .filter((matcher) => matcher[0] === "!")
+    .map((matcher) => matcher.substr(1));
+  return fileNames.filter((fileName) => (
+    exclusionMatchers.every((matcher) => fileName !== matcher)
   ));
 }
 
@@ -56,7 +58,7 @@ function applyArgumentsFromCommandLine(args: string[]) {
         }
       }
       return newReducer;
-    }, []).forEach(element => {
+    }, []).forEach((element) => {
       config[element[0]] = element[1];
     });
     return config;
