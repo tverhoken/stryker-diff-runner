@@ -9,7 +9,7 @@ env:
   - CAN_PUBLISH=$(sh ./.can-publish.sh)
 script:
   - npm run lint
-  - npm run test
+  - npm run test:ci
   - npm run build
   - if [ $TRAVIS_BRANCH == 'master' ] && [ $TRAVIS_PULL_REQUEST == 'false' ]; then npm run release; fi
   - echo "Can publish ? $CAN_PUBLISH"
