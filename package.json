@@ -9,6 +9,7 @@
     "build": "npm run clean || tsc -p tsconfig.prod.json",
     "lint": "tslint --project .",
     "test": "jest --coverage",
+    "test:ci": "npm run test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch",
     "release": "standard-version --commit-all --message=\"chore(release): %s [ci skip]\" && git push https://${GITHUB_TOKEN}@github.com/tverhoken/stryker-diff-runner.git --follow-tags $(git rev-parse --abbrev-ref HEAD):master"
   },
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "@types/node": "^11.11.1",
+    "coveralls": "^3.0.3",
     "jest": "^24.4.0",
     "standard-version": "^5.0.2",
     "ts-jest": "^24.0.0",
