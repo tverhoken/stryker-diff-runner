@@ -7,7 +7,7 @@ export default function run(commandArgs: string[]) {
   const strykerConfPath = join(process.cwd(), "stryker.conf.js");
 
   exec(
-    "git diff origin/master --name-only | grep -E -v '.*\\.test.*' | grep -e 'src/.*\\.ts'",
+    "git diff origin/master --name-only | grep -E -v '.*\\.test.*' | grep -e 'src/.*\\.[jt]s'",
     (error, stdout, stderr) => {
       if (error) {
         console.error(error.message);
