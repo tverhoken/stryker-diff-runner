@@ -4,7 +4,7 @@ This module provide a [stryker](https://github.com/stryker-mutator) runner that 
 
 [![Build Status](https://travis-ci.com/tverhoken/stryker-diff-runner.svg?branch=master)](https://travis-ci.org/tverhoken/stryker-diff-runner)
 [![Coverage Status](https://coveralls.io/repos/github/tverhoken/stryker-diff-runner/badge.svg?branch=master)](https://coveralls.io/github/tverhoken/stryker-diff-runner?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/norauto/log4js2-ajax-appender/badge.svg?targetFile=package.json)](https://snyk.io/test/github/norauto/log4js2-ajax-appender?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/tverhoken/stryker-diff-runner/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tverhoken/stryker-diff-runner?targetFile=package.json)
 
 ## Getting started
 
