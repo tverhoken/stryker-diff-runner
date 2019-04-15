@@ -1,13 +1,13 @@
+import { Config } from "@stryker-mutator/api/config";
+import Stryker from "@stryker-mutator/core";
 import { exec } from "child_process";
-import Stryker from "stryker";
-import { Config } from "stryker-api/config";
 
 import run from "@src/index";
 import defaultStrykerConfFile from "../stryker.conf.js";
 
+jest.mock("@stryker-mutator/api/config");
+jest.mock("@stryker-mutator/core");
 jest.mock("child_process");
-jest.mock("stryker");
-jest.mock("stryker-api/config");
 jest.mock("../stryker.conf.js");
 
 describe("Stryker diff runner", () => {

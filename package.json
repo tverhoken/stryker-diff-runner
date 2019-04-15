@@ -33,12 +33,12 @@
   },
   "homepage": "https://github.com/tverhoken/stryker-diff-runner#readme",
   "peerDependencies": {
-    "stryker": "^0.35.1",
-    "stryker-api": "^0.24.1"
+    "@stryker-mutator/api": "^1.2.0",
+    "@stryker-mutator/core": "^1.2.0"
   },
   "dependencies": {
-    "stryker": "^0.35.1",
-    "stryker-api": "^0.24.1"
+    "@stryker-mutator/api": "^1.2.0",
+    "@stryker-mutator/core": "^1.2.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",

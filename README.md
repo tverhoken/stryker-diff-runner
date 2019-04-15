@@ -17,10 +17,10 @@ You will need the following things properly installed on your computer :
 
 ### Installation
 
-This module required stryker and stryker-api on your project to work. Install it and these dependencies like so :
+This module required `@stryker-mutator/core` and `@stryker-mutator/api` on your project to work. Install it and these dependencies like so :
 
 ```
-$ npm add stryker stryker-api stryker-diff-runner
+$ npm add @stryker-mutator/core @stryker-mutator/api stryker-diff-runner
 ```
 
 ### Usage

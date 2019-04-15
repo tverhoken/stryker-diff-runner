@@ -1,7 +1,7 @@
+import { Config } from "@stryker-mutator/api/config";
+import Stryker from "@stryker-mutator/core";
 import { exec } from "child_process";
 import { join } from "path";
-import Stryker from "stryker";
-import { Config } from "stryker-api/config";
 
 export default function run(commandArgs: string[]) {
   const strykerConfPath = join(process.cwd(), "stryker.conf.js");
