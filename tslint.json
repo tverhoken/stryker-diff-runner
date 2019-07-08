@@ -5,9 +5,9 @@
     ],
     "linterOptions": {
         "exclude": [
-            "bin",
-            "dist",
-            "node_modules",
+            "bin/**/*",
+            "dist/**/*",
+            "node_modules/**/*",
             "jest.config.js",
             "stryker.conf.js"
         ]
