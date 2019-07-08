@@ -1,6 +1,6 @@
 {
   "name": "stryker-diff-runner",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An utility script that runs Stryker mutation testing on files diff between current git working branch and default one.",
   "main": "dist/index.ts",
   "bin": "bin/stryker-diff-runner",
