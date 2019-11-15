@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.8](https://github.com/tverhoken/stryker-diff-runner/compare/v1.0.7...v1.0.8) (2019-11-15)
+
+
+### Bug Fixes
+
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([#12](https://github.com/tverhoken/stryker-diff-runner/issues/12)) ([84bbe1b](https://github.com/tverhoken/stryker-diff-runner/commit/84bbe1b))
+
+
+
 ### [1.0.7](https://github.com/tverhoken/stryker-diff-runner/compare/v1.0.6...v1.0.7) (2019-11-15)
 
 
