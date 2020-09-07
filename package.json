@@ -41,7 +41,7 @@
   "dependencies": {
     "@stryker-mutator/api": "^2.0.1",
     "@stryker-mutator/core": "^2.0.1",
-    "snyk": "^1.290.1"
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",

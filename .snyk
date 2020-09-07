@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.14.0
+version: v1.14.1
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -62,3 +62,52 @@ patch:
         patched: '2019-12-12T07:08:30.303Z'
     - snyk > snyk-sbt-plugin > tree-kill:
         patched: '2019-12-12T07:08:30.303Z'
+  SNYK-JS-LODASH-567746:
+    - '@stryker-mutator/core > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - '@stryker-mutator/core > inquirer > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > inquirer > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-config > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - '@stryker-mutator/core > istanbul-lib-instrument > @babel/traverse > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
+    - '@stryker-mutator/core > log4js > streamroller > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - '@stryker-mutator/core > istanbul-lib-instrument > @babel/traverse > @babel/generator > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
+    - '@stryker-mutator/core > log4js > streamroller > async > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > graphlib > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/ruby-semver > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - '@stryker-mutator/core > istanbul-lib-instrument > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > graphlib > lodash:
+        patched: '2020-05-01T07:08:35.743Z'
+    - '@stryker-mutator/core > istanbul-lib-instrument > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash':
+        patched: '2020-05-01T07:08:35.743Z'
