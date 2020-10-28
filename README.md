@@ -39,6 +39,22 @@ Add a NPM script to run Stryker mutation testing through the diff runner
 
 All stryker command arguments can be passed to the diff runner.
 
+### Custom commands
+
+By default stryker-diff-runner performs a comparison with the master branch and looks for the file stryker.conf.js in the root directory.
+
+To change these settings include the `--branch` and `--path` commands. Check the example below:
+
+```javascript
+{
+    // ...
+    "scripts": {
+        // ...
+        "test:mutation:diff": "stryker-diff-runner --path 'test/stryker.conf.js' --branch 'main'"
+    }
+}
+```
+
 ## Development
 
 In order to contribute and be able to start developing on the project, you will have to follow following steps :
