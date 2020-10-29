@@ -34,21 +34,21 @@
   },
   "homepage": "https://github.com/tverhoken/stryker-diff-runner#readme",
   "peerDependencies": {
-    "@stryker-mutator/api": "^2.0.1",
-    "@stryker-mutator/core": "^2.0.1"
+    "@stryker-mutator/api": "^3.0.0",
+    "@stryker-mutator/core": "^3.0.0"
   },
   "dependencies": {
-    "@stryker-mutator/api": "^2.0.1",
-    "@stryker-mutator/core": "^2.0.1",
+    "@stryker-mutator/api": "^3.0.0",
+    "@stryker-mutator/core": "^3.0.0",
     "snyk": "^1.316.1"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.11",
+    "@types/jest": "^26.0.0",
     "@types/node": "^12.0.12",
     "coveralls": "^3.0.3",
-    "jest": "^24.4.0",
+    "jest": "^26.0.0",
     "standard-version": "^8.0.1",
-    "ts-jest": "^24.0.0",
+    "ts-jest": "^26.0.0",
     "tslint": "^5.13.1",
     "typescript": "^3.5.2"
   },
