@@ -12,7 +12,7 @@ script:
   - npm run lint
   - npm run test:ci
   - npm run build
-  - if [ $TRAVIS_BRANCH == 'master' ] && [ $TRAVIS_PULL_REQUEST == 'false' ]; then npm run release; fi
+  - if [ $TRAVIS_BRANCH == '@stryker-mutator-v2' ] && [ $TRAVIS_PULL_REQUEST == 'false' ]; then npm run release; fi
   - echo "Can publish ? $CAN_PUBLISH"
 deploy:
   - provider: npm
