@@ -13,14 +13,14 @@ This module provide a [stryker](https://github.com/stryker-mutator) runner that 
 You will need the following things properly installed on your computer :
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) >= 7.0.0
+* [Node.js](https://nodejs.org/) >= 12.0.0
 
 ### Installation
 
-This module required `@stryker-mutator/core@^2.0.1` and `@stryker-mutator/api@^2.0.1` on your project to work. Install it and these dependencies like so :
+This module required `@stryker-mutator/core@3` and `@stryker-mutator/api@3` on your project to work. Install it and these dependencies like so :
 
 ```
-$ npm add @stryker-mutator/core@^2.0.1 @stryker-mutator/api@^2.0.1 stryker-diff-runner
+$ npm add @stryker-mutator/core@3 @stryker-mutator/api@3 stryker-diff-runner
 ```
 
 ### Usage
