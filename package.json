@@ -1,6 +1,6 @@
 {
   "name": "stryker-diff-runner",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "An utility script that runs Stryker mutation testing on files diff between current git working branch and default one.",
   "main": "dist/index.ts",
   "bin": "bin/stryker-diff-runner",
@@ -17,9 +17,8 @@
     "test": "jest --coverage",
     "test:ci": "npm run test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch",
-    "release": "git add dist && standard-version --commit-all --message=\"chore(release): %s [ci skip]\" && git push https://${GITHUB_TOKEN}@github.com/tverhoken/stryker-diff-runner.git --follow-tags $(git rev-parse --abbrev-ref HEAD):master",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "release": "git add dist && standard-version --commit-all --message=\"chore(release): %s [ci skip]\"",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",

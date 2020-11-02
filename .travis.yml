@@ -8,6 +8,7 @@ branches:
 env:
   - CAN_PUBLISH=$(sh ./.can-publish.sh)
 script:
+  - npm run snyk-protect
   - npm run lint
   - npm run test:ci
   - npm run build
@@ -18,4 +19,9 @@ deploy:
     email: "thomas.verhoken@gmail.com"
     api_key: $NPM_TOKEN
     on:
-      condition: "$CAN_PUBLISH = 'true'"  
+      condition: "$CAN_PUBLISH = 'true'"
+after_deploy:
+  - rm -r dist
+  - git rm -r dist
+  - git commit -m "Cleanup for next iteration [ci skip]"
+  - git push https://${GITHUB_TOKEN}@github.com/tverhoken/stryker-diff-runner.git --follow-tags $(git rev-parse --abbrev-ref HEAD):master
