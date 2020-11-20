@@ -6,18 +6,12 @@ import { join } from "path";
 export default function run(commandArgs: string[]) {
 
   const args = commandArgs.slice(2);
-  let branch;
-  let path;
+  const argsValuesArray = mapAllArgumentsToAnArray(args);
+  const branchArgPredicate = (argArray: Array<string | number>) => argArray[0] === "branch";
+  const pathArgPredicate = (argArray: Array<string | number>) => argArray[0] === "path";
 
-  mapAllArgumentsToAnArray(args).forEach((element) => {
-    switch (element[0]) {
-      case "branch":
-        branch = element[1];
-        break;
-      case "path":
-        path = element[1];
-    }
-  });
+  const branch = argsValuesArray.some(branchArgPredicate) && argsValuesArray.find(branchArgPredicate)![1].toString();
+  const path = argsValuesArray.some(pathArgPredicate) && argsValuesArray.find(pathArgPredicate)![1].toString();
 
   const strykerConfPath = join(process.cwd(), path || "stryker.conf.js");
 
