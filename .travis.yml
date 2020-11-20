@@ -3,8 +3,8 @@ node_js:
   - "node"
 
 branches:
-  except:
-    - /^v([0-9]+\.?)+/
+  only:
+  - master
 env:
   - CAN_PUBLISH=$(sh ./.can-publish.sh)
 script:
