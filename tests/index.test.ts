@@ -146,7 +146,7 @@ describe("Stryker diff runner", () => {
 
   it('Should not concat "--branch" argument and value to stryker configuration.', (done) => {
     const expectedConfig = {
-      mutate: []
+      mutate: [],
     };
     mockStrykerConstruction(expectedConfig);
 
@@ -162,7 +162,7 @@ describe("Stryker diff runner", () => {
 
   it('Should not concat "--path" argument and value to stryker configuration.', (done) => {
     const expectedConfig = {
-      mutate: []
+      mutate: [],
     };
     mockStrykerConstruction(expectedConfig);
 
