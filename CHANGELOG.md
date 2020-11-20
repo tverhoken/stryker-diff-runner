@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/tverhoken/stryker-diff-runner/compare/v1.0.20...v1.1.0) (2020-11-20)
+
+
+### Features
+
+* allow customizing stryker directory and branch name ([#25](https://github.com/tverhoken/stryker-diff-runner/issues/25)) ([8ff5642](https://github.com/tverhoken/stryker-diff-runner/commit/8ff564201b817e727e7409aba9aae1356a183eab)), closes [#1](https://github.com/tverhoken/stryker-diff-runner/issues/1) [#2](https://github.com/tverhoken/stryker-diff-runner/issues/2) [#1](https://github.com/tverhoken/stryker-diff-runner/issues/1) [#2](https://github.com/tverhoken/stryker-diff-runner/issues/2)
+
 ### [1.0.20](https://github.com/tverhoken/stryker-diff-runner/compare/v1.0.19...v1.0.20) (2020-10-30)
 
 ### [1.0.19](https://github.com/tverhoken/stryker-diff-runner/compare/v1.0.18...v1.0.19) (2020-10-30)
