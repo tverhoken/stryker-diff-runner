@@ -4,11 +4,13 @@ import { exec } from "child_process";
 
 import run from "@src/index";
 import defaultStrykerConfFile from "../stryker.conf.js";
+import alternativeStrykerConfFile from "./stryker.conf.js";
 
 jest.mock("@stryker-mutator/api/config");
 jest.mock("@stryker-mutator/core");
 jest.mock("child_process");
 jest.mock("../stryker.conf.js");
+jest.mock("./stryker.conf.js");
 
 describe("Stryker diff runner", () => {
   let mockedConfig: any;
@@ -23,6 +25,18 @@ describe("Stryker diff runner", () => {
       runMutationTest: jest.fn(),
     };
     mockStrykerConstruction(mockedConfig);
+  });
+
+  it('Should execute git diff on "origin/master" by default.', () => {
+    run(["node", "exec"]);
+
+    expect((exec as any).mock.calls[0][0]).toMatch(/^git diff origin\/master .*$/);
+  });
+
+  it('Should execute git diff on "origin/test" when "--branch" arg is provided.', () => {
+    run(["node", "exec", "--branch", "test"]);
+
+    expect((exec as any).mock.calls[0][0]).toMatch(/^git diff origin\/test .*$/);
   });
 
   it("Should exit when file diff command gives an error.", () => {
@@ -43,6 +57,17 @@ describe("Stryker diff runner", () => {
 
     setTimeout(() => {
       expect(defaultStrykerConfFile).toHaveBeenCalledWith(mockedConfig);
+      done();
+    });
+  });
+
+  it('Should import "stryker.conf.js" from provided path when "--path" arg is provided.', (done) => {
+    run(["node", "exec", "--path", "./tests/stryker.conf.js"]);
+
+    runFileDiffCommandCallback(null, "");
+
+    setTimeout(() => {
+      expect(alternativeStrykerConfFile).toHaveBeenCalledWith(mockedConfig);
       done();
     });
   });
@@ -112,6 +137,38 @@ describe("Stryker diff runner", () => {
     run(["node", "exec"]);
 
     runFileDiffCommandCallback(null, fileDiffList);
+
+    setTimeout(() => {
+      expect(mockedStrykerInstance.runMutationTest).toHaveBeenCalled();
+      done();
+    });
+  });
+
+  it('Should not concat "--branch" argument and value to stryker configuration.', (done) => {
+    const expectedConfig = {
+      mutate: [],
+    };
+    mockStrykerConstruction(expectedConfig);
+
+    run(["node", "exec", "--branch", "test"]);
+
+    runFileDiffCommandCallback(null, "");
+
+    setTimeout(() => {
+      expect(mockedStrykerInstance.runMutationTest).toHaveBeenCalled();
+      done();
+    });
+  });
+
+  it('Should not concat "--path" argument and value to stryker configuration.', (done) => {
+    const expectedConfig = {
+      mutate: [],
+    };
+    mockStrykerConstruction(expectedConfig);
+
+    run(["node", "exec", "--path", "./tests/stryker.conf.js"]);
+
+    runFileDiffCommandCallback(null, "");
 
     setTimeout(() => {
       expect(mockedStrykerInstance.runMutationTest).toHaveBeenCalled();
