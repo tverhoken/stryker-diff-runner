@@ -17,10 +17,10 @@ You will need the following things properly installed on your computer :
 
 ### Installation
 
-This module required `@stryker-mutator/core` and `@stryker-mutator/api` on your project to work. Install it and these dependencies like so :
+This module required `@stryker-mutator/core@^2.0.1` and `@stryker-mutator/api@^2.0.1` on your project to work. Install it and these dependencies like so :
 
 ```
-$ npm add @stryker-mutator/core @stryker-mutator/api stryker-diff-runner
+$ npm add @stryker-mutator/core@^2.0.1 @stryker-mutator/api@^2.0.1 stryker-diff-runner
 ```
 
 ### Usage
@@ -41,7 +41,7 @@ All stryker command arguments can be passed to the diff runner.
 
 ### Custom commands
 
-By default stryker-diff-runner performs a comparison with the master branch and looks for the file stryker.conf.js in the root directory.
+By default `stryker-diff-runner` performs a comparison with the master branch and looks for the file stryker.conf.js in the root directory.
 
 To change these settings include the `--branch` and `--path` commands. Check the example below:
 
@@ -50,7 +50,7 @@ To change these settings include the `--branch` and `--path` commands. Check the
     // ...
     "scripts": {
         // ...
-        "test:mutation:diff": "stryker-diff-runner --path 'test/stryker.conf.js' --branch 'main'"
+        "test:mutation:diff": "stryker-diff-runner --path test/stryker.conf.js --branch main"
     }
 }
 ```
