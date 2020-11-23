@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/tverhoken/stryker-diff-runner/compare/v2.1.0...v2.2.0) (2020-11-23)
+
+
+### Features
+
+* **stryker:** Upgrade to Stryker v4 ([#33](https://github.com/tverhoken/stryker-diff-runner/issues/33)) ([2606ea5](https://github.com/tverhoken/stryker-diff-runner/commit/2606ea52b78d8b4bf988423060166615a8babb0f)), closes [#27](https://github.com/tverhoken/stryker-diff-runner/issues/27)
+
 ## [2.1.0](https://github.com/tverhoken/stryker-diff-runner/compare/v2.0.0...v2.1.0) (2020-11-23)
 
 
