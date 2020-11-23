@@ -3,12 +3,10 @@ import { exec } from "child_process";
 import { join } from "path";
 
 import run from "@src/index";
-import alternativeStrykerConfFile from "./stryker.conf.js";
 
 jest.mock("@stryker-mutator/api/config");
 jest.mock("@stryker-mutator/core");
 jest.mock("child_process");
-jest.mock("./stryker.conf.js");
 
 describe("Stryker diff runner", () => {
   let mockedConfig: any;
@@ -23,6 +21,10 @@ describe("Stryker diff runner", () => {
     };
 
     mockStrykerConstruction(mockedConfig);
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   it('Should execute git diff on "origin/master" by default.', () => {
@@ -47,30 +49,19 @@ describe("Stryker diff runner", () => {
     expect(exitMock).toHaveBeenCalledWith(1);
   });
 
-  it('Should import "stryker.conf.js" from project directory by default.', (done) => {
+  it("Should run mutation test with default loaded configuration when no args are provided to the run.", (done) => {
     run(["node", "exec"]);
 
     runFileDiffCommandCallback(null, "");
 
     setTimeout(() => {
-      expect(defaultStrykerConfFile).toHaveBeenCalledWith(mockedConfig);
+      expect(mockedStrykerInstance.runMutationTest).toHaveBeenCalled();
       done();
     });
   });
 
   it('Should import "stryker.conf.js" from provided path when "--path" arg is provided.', (done) => {
     run(["node", "exec", "--path", "./tests/stryker.conf.js"]);
-
-    runFileDiffCommandCallback(null, "");
-
-    setTimeout(() => {
-      expect(alternativeStrykerConfFile).toHaveBeenCalledWith(mockedConfig);
-      done();
-    });
-  });
-
-  it("Should run mutation test with loaded configuration when no args are provided to the run.", (done) => {
-    run(["node", "exec"]);
 
     runFileDiffCommandCallback(null, "");
 

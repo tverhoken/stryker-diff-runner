@@ -1,2 +1,3 @@
-module.exports = function(config) {
+module.exports = {
+  mutate: [],
 };

@@ -23,6 +23,12 @@ This module required `@stryker-mutator/core@3` and `@stryker-mutator/api@3` on y
 $ npm add @stryker-mutator/core@3 @stryker-mutator/api@3 stryker-diff-runner
 ```
 
+If you want to use this module with an older version of Stryker, you can install the v1 package :
+
+```
+$ npm add @stryker-mutator/core@2 @stryker-mutator/api@2 stryker-diff-runner@1
+```
+
 ### Usage
 
 Add a NPM script to run Stryker mutation testing through the diff runner
