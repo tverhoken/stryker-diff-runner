@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/tverhoken/stryker-diff-runner/compare/v2.0.0...v2.1.0) (2020-11-23)
+
+
+### Features
+
+* **conf:** Enable json configuration file use ([#32](https://github.com/tverhoken/stryker-diff-runner/issues/32)) ([0dfbee5](https://github.com/tverhoken/stryker-diff-runner/commit/0dfbee5d2ca96f9c2a7b7bc5fbef1fb837eed5e7)), closes [#30](https://github.com/tverhoken/stryker-diff-runner/issues/30)
+
 ## [2.0.0](https://github.com/tverhoken/stryker-diff-runner/compare/v1.1.0...v2.0.0) (2020-11-23)
 
 
