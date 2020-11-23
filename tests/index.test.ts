@@ -4,7 +4,6 @@ import { join } from "path";
 
 import run from "@src/index";
 
-jest.mock("@stryker-mutator/api/config");
 jest.mock("@stryker-mutator/core");
 jest.mock("child_process");
 
