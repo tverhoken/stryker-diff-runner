@@ -1,4 +1,4 @@
-import { Config } from "@stryker-mutator/api/config";
+import { StrykerOptions } from "@stryker-mutator/api/core";
 import Stryker from "@stryker-mutator/core";
 import { exec } from "child_process";
 import { join } from "path";
@@ -45,13 +45,11 @@ function filterExcludedFilames(fileNames: string[], matchers: string[]) {
 }
 
 function initConfig(module: any) {
-  const config = new Config();
-  module.default(config);
-  return config;
+  return module.default;
 }
 
 function applyArgumentsFromCommandLine(args: string[]) {
-  return (config: Config) => {
+  return (config: StrykerOptions) => {
     mapAllArgumentsToAnArray(args).forEach((element) => {
       if (element[0] !== "branch" && element[0] !== "path") {
         config[element[0]] = element[1];
@@ -78,15 +76,15 @@ function mapAllArgumentsToAnArray(args: string[]) {
 }
 
 function applyFilesToMutate(filesToMutate: string[]) {
-  return (config: Config) => {
+  return (config: StrykerOptions): StrykerOptions => {
     const mutate = config.mutate;
     mutate.splice(0, 1);
     const filteredFilesToMutate = filterExcludedFilames(filesToMutate, mutate);
-    return { ...config, mutate: mutate.concat(filteredFilesToMutate) } as Config;
+    return { ...config, mutate: mutate.concat(filteredFilesToMutate) };
   };
 }
 
-function launchStryker(config: Config) {
+function launchStryker(config: StrykerOptions) {
   const stryker = new Stryker(config);
 
   return stryker.runMutationTest();

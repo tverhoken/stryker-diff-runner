@@ -60,7 +60,7 @@
   },
   "exclude": [
     "stryker.conf.js",
-    "bin/",
+    "bin",
     "tests"
   ]
 }
