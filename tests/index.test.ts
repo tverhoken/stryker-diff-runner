@@ -60,6 +60,23 @@ describe("Stryker diff runner", () => {
     });
   });
 
+  it("Should run mutation test with default loaded configuration from 'stryker.conf.json' when no args are provided to the run and no 'stryker.conf.js' file found.", (done) => {
+    const expectedConfig = {
+      mutate: [],
+    };
+    jest.spyOn(process, "cwd").mockReturnValue(join(__dirname, "mock-stryker-conf", "json-file-entry"));
+    mockStrykerConstruction(expectedConfig);
+
+    run(["node", "exec"]);
+
+    runFileDiffCommandCallback(null, "");
+
+    setTimeout(() => {
+      expect(mockedStrykerInstance.runMutationTest).toHaveBeenCalled();
+      done();
+    });
+  });
+
   it('Should import "stryker.conf.js" from provided path when "--path" arg is provided.', (done) => {
     run(["node", "exec", "--path", "./tests/stryker.conf.js"]);
 
