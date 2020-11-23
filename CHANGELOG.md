@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/tverhoken/stryker-diff-runner/compare/v1.1.0...v2.0.0) (2020-11-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* Stryker configuration file do not export a function anymore. Just a plain Javascript object.
+
+* doc: Update documentation
+
+* chore: Update from master branch
+
+* Chore/upgrade stryker mutator (#31) ([0e7355d](https://github.com/tverhoken/stryker-diff-runner/commit/0e7355deac32a731dc555135bdc84bd7718c6a17)), closes [#31](https://github.com/tverhoken/stryker-diff-runner/issues/31) [#26](https://github.com/tverhoken/stryker-diff-runner/issues/26)
+
 ## [1.1.0](https://github.com/tverhoken/stryker-diff-runner/compare/v1.0.20...v1.1.0) (2020-11-20)
 
 
