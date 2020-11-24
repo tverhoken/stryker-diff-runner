@@ -34,7 +34,6 @@
   },
   "homepage": "https://github.com/tverhoken/stryker-diff-runner#readme",
   "peerDependencies": {
-    "@stryker-mutator/api": ">=3.0.0",
     "@stryker-mutator/core": ">=3.0.0"
   },
   "dependencies": {
