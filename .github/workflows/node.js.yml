@@ -83,7 +83,16 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
     - run: npm ci
-    - run: npm run test:ci
+    - run: npm run test
+    
+    - name: Coveralls GitHub Action
+      # You may pin to the exact commit or the version.
+      # uses: coverallsapp/github-action@8cbef1dea373ebce56de0a14c68d6267baa10b44
+      uses: coverallsapp/github-action@v1.1.2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        # Job flag name, e.g. "Unit", "Functional", or "Integration". Will be shown in the Coveralls UI.
+        flag-name: Unit
       
   build:
     needs: [prepare, lint, test]
