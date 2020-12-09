@@ -2,7 +2,7 @@
 
 This module provide a [stryker](https://github.com/stryker-mutator) runner that allow to run mutation testing only on files diff with default branch.
 
-[![Build Status](https://github.com/tverhoken/stryker-diff-runner/workflows/Node.js%20CI/badge.svg?branch=master)]
+![Build Status](https://github.com/tverhoken/stryker-diff-runner/workflows/Node.js%20CI/badge.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/tverhoken/stryker-diff-runner/badge.svg?branch=master)](https://coveralls.io/github/tverhoken/stryker-diff-runner?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/tverhoken/stryker-diff-runner/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tverhoken/stryker-diff-runner?targetFile=package.json)
 
