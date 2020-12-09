@@ -2,7 +2,7 @@
 
 This module provide a [stryker](https://github.com/stryker-mutator) runner that allow to run mutation testing only on files diff with default branch.
 
-[![Build Status](https://travis-ci.com/tverhoken/stryker-diff-runner.svg?branch=master)](https://travis-ci.org/tverhoken/stryker-diff-runner)
+![Build Status](https://github.com/tverhoken/stryker-diff-runner/workflows/Node.js%20CI/badge.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/tverhoken/stryker-diff-runner/badge.svg?branch=master)](https://coveralls.io/github/tverhoken/stryker-diff-runner?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/tverhoken/stryker-diff-runner/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tverhoken/stryker-diff-runner?targetFile=package.json)
 
@@ -17,10 +17,10 @@ You will need the following things properly installed on your computer :
 
 ### Installation
 
-This module required `@stryker-mutator/core` and `@stryker-mutator/api` >=3 on your project to work. Install it and these dependencies like so :
+This module required `@stryker-mutator/core` >=3 on your project to work. Install it and these dependencies like so :
 
 ```
-$ npm add @stryker-mutator/core @stryker-mutator/api stryker-diff-runner
+$ npm add @stryker-mutator/core stryker-diff-runner
 ```
 
 If you want to use this module with an older version of Stryker, you can install the v1 package :
