@@ -55,6 +55,7 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - run: npm ci
     - run: npm run lint
 
   test:
@@ -69,6 +70,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm ci
     - run: npm run test:ci
       
   build:
@@ -83,4 +85,5 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm ci
     - run: npm run build
