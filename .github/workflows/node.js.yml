@@ -155,6 +155,8 @@ jobs:
           ${{ runner.os }}-
     - run: npm ci
     - run: npm run release
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Cleanup after release
       run: |
         rm -r dist
