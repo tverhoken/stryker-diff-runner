@@ -182,6 +182,7 @@ jobs:
         token: '${{ secrets.ACTIONS_TOKEN }}'
     - run: npm ci
     - run: npm run release
+    - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Cleanup after release
