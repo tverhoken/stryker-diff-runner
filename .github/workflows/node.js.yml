@@ -180,6 +180,7 @@ jobs:
     - run: npm ci
     - run: |
         ls -al .
+        ls -al dist
     #- run: npm run release
     #  env:
     #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
