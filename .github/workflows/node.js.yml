@@ -142,7 +142,7 @@ jobs:
     - run: npm run build
       
   release:
-    #if: contains(github.ref, 'master') && !contains(github.event.head_commit.message, '[ci skip]')
+    if: contains(github.ref, 'master') && !contains(github.event.head_commit.message, '[ci skip]')
     needs: [build]
     runs-on: ubuntu-latest 
     strategy:
@@ -180,15 +180,13 @@ jobs:
     - uses: oleksiyrudenko/gha-git-credentials@v2-latest
       with:
         token: '${{ secrets.GITHUB_TOKEN }}'
-    - run: |
-        git config --list
-    #- run: npm ci
-    #- run: npm run release
-    #  env:
-    #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    #- name: Cleanup after release
-    #  run: |
-    #    rm -r dist
-    #    git rm -r dist
-    #    git commit -m "Cleanup for next iteration [ci skip]"
-    #    git push https://${{ secrets.GITHUB_TOKEN }}@github.com/tverhoken/stryker-diff-runner.git --follow-tags $(git rev-parse --abbrev-ref HEAD):master
+    - run: npm ci
+    - run: npm run release
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Cleanup after release
+      run: |
+        rm -r dist
+        git rm -r dist
+        git commit -m "Cleanup for next iteration [ci skip]"
+        git push origin master
