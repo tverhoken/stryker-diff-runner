@@ -179,9 +179,10 @@ jobs:
           ${{ runner.os }}-
     - uses: oleksiyrudenko/gha-git-credentials@v2-latest
       with:
-        token: '${{ secrets.GITHUB_TOKEN }}'
+        token: '${{ secrets.ACTIONS_TOKEN }}'
     - run: npm ci
     - run: npm run release
+    - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Cleanup after release
