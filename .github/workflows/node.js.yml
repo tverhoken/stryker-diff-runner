@@ -177,6 +177,9 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      with:
+        token: '${{ secrets.GITHUB_TOKEN }}'
     - run: npm ci
     - run: npm run release
       env:
@@ -186,4 +189,4 @@ jobs:
         rm -r dist
         git rm -r dist
         git commit -m "Cleanup for next iteration [ci skip]"
-        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/tverhoken/stryker-diff-runner.git --follow-tags $(git rev-parse --abbrev-ref HEAD):master
+        git push origin master
