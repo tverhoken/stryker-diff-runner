@@ -150,6 +150,8 @@ jobs:
         node-version: [12.x]
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: '${{ secrets.ACTIONS_TOKEN }}'
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -177,9 +179,6 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
-      with:
-        token: '${{ secrets.ACTIONS_TOKEN }}'
     - run: npm ci
     - run: npm run release
     - uses: JS-DevTools/npm-publish@v1
