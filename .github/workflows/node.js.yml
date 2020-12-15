@@ -182,9 +182,9 @@ jobs:
         token: '${{ secrets.ACTIONS_TOKEN }}'
     - run: npm ci
     - run: npm run release
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
     - name: Cleanup after release
       run: |
         rm -r dist
