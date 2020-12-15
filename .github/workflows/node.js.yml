@@ -142,7 +142,7 @@ jobs:
     - run: npm run build
       
   release:
-    if: contains(github.ref, 'master') && !contains(github.event.head_commit.message, '[ci skip]')
+    #if: contains(github.ref, 'master') && !contains(github.event.head_commit.message, '[ci skip]')
     needs: [build]
     runs-on: ubuntu-latest 
     strategy:
@@ -179,14 +179,16 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-    - run: npm ci
-    - run: npm run release
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-    - name: Cleanup after release
-      run: |
-        rm -r dist
-        git rm -r dist
-        git commit -m "Cleanup for next iteration [ci skip]"
-        git push origin master
+    - run: |
+        git config --list
+    #- run: npm ci
+    #- run: npm run release
+    #- uses: JS-DevTools/npm-publish@v1
+    #  with:
+    #    token: ${{ secrets.NPM_TOKEN }}
+    #- name: Cleanup after release
+    #  run: |
+    #    rm -r dist
+    #    git rm -r dist
+    #    git commit -m "Cleanup for next iteration [ci skip]"
+    #    git push origin master
