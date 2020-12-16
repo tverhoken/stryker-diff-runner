@@ -127,6 +127,17 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - name: Cache artifact
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-artifact
+      with:
+        path: ./dist
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
     - run: npm ci
     - run: npm run build
       
@@ -139,6 +150,12 @@ jobs:
         node-version: [12.x]
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: '${{ secrets.ACTIONS_TOKEN }}'
+    - name: Configure CI Git User
+      run: |
+        git config --global user.name '@pipeline'
+        git config --global user.email 'pipeline@users.noreply.github.com'
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -155,13 +172,25 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - name: Cache artifact
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-artifact
+      with:
+        path: ./dist
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
     - run: npm ci
     - run: npm run release
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
     - name: Cleanup after release
       run: |
         rm -r dist
         git rm -r dist
         git commit -m "Cleanup for next iteration [ci skip]"
-        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/tverhoken/stryker-diff-runner.git --follow-tags $(git rev-parse --abbrev-ref HEAD):master
+        git push origin master
