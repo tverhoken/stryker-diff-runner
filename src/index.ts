@@ -29,10 +29,10 @@ export default function run(commandArgs: string[]) {
   );
 
   exec(
-    `git diff origin/${branch || "master"} --name-only | grep -E -v '.*\\.test.*' | grep -e 'src/.*\\.[jt]s'`,
+    `git diff origin/${branch || "master"} --name-only | grep -E -v '.*.test.*' | grep -e 'src/.*.[jt]s'`,
     (error, stdout, stderr) => {
       if (error) {
-        console.log('Stryker-diff-runner:\n\tNo files found in the current branch to be mutated.')
+        console.warn('Stryker-diff-runner:\n\tNo files found in the current branch to be mutated.')
         process.exit(0);
       }
 
