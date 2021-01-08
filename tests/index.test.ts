@@ -27,9 +27,14 @@ describe("Stryker diff runner", () => {
   });
 
   it('Should execute git rev-parse on "origin/master" by default.', () => {
+    const exitMock = jest.spyOn(process, "exit").mockImplementation();
+
     run(["node", "exec"]);
 
+    (exec as any).mock.calls[0][1](null, "")
+
     expect((exec as any).mock.calls[0][0]).toMatch('git rev-parse --verify origin/master');
+    expect(exitMock).not.toHaveBeenCalled();
   });
 
   it('Should execute git rev-parse on "origin/test" when "--branch" arg is provided.', () => {
@@ -50,17 +55,29 @@ describe("Stryker diff runner", () => {
     expect((exec as any).mock.calls[1][0]).toMatch(/^git diff origin\/test .*$/);
   });
 
-  it("Should exit with branch message not found when branch doesn't exist.", () => {
+  it("Should exit with branch message not found when branch 'non-existent' doesn't exist.", () => {
     const branch = "non-existent";
     const exitMock = jest.spyOn(process, "exit").mockImplementation();
     const consoleSpy = jest.spyOn(console, "error");
 
     run(["node", "exec", "--branch", branch]);
 
-    (exec as any).mock.calls[0][1](new Error("NO BRANCH"), "")
+    (exec as any).mock.calls[0][1](new Error("NO BRANCH NON-EXISTENT"), "")
 
     expect(exitMock).toHaveBeenCalledWith(1);
     expect(consoleSpy).toHaveBeenCalledWith(`Stryker-diff-runner:\n\t"origin/${branch}" branch was not found.\n\tStryker-diff-runner will be aborted.\n`)
+  });
+
+  it("Should exit with branch message not found when default branch doesn't exist.", () => {
+    const exitMock = jest.spyOn(process, "exit").mockImplementation();
+    const consoleSpy = jest.spyOn(console, "error");
+
+    run(["node", "exec"]);
+
+    (exec as any).mock.calls[0][1](new Error("NO BRANCH MASTER"), "")
+
+    expect(exitMock).toHaveBeenCalledWith(1);
+    expect(consoleSpy).toHaveBeenCalledWith(`Stryker-diff-runner:\n\t"origin/master" branch was not found.\n\tStryker-diff-runner will be aborted.\n`)
   });
 
   it("should exit with a message that no files will be mutated when there is no changed file in the branch.", () => {
