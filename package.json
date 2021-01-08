@@ -14,7 +14,7 @@
     "clean": "rm -r dist",
     "build": "npm run clean || tsc -p tsconfig.prod.json",
     "lint": "tslint --project .",
-    "test": "jest --coverage",
+    "test": "jest --coverage --silent --verbose",
     "test:ci": "npm run test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch",
     "release": "git add dist && standard-version --commit-all --releaseCommitMessageFormat=\"chore(release): %s [ci skip]\"",
