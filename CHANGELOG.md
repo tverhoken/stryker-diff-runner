@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.3.0 (2021-01-12)
+
+
+### Features
+
+* Allow use on branch without changed js and ts file ([#36](https://github.com/tverhoken/stryker-diff-runner/issues/36)) ([151a143](https://github.com/tverhoken/stryker-diff-runner/commit/151a14341579cab9a36c2d0b78537500d152d41a)), closes [#34](https://github.com/tverhoken/stryker-diff-runner/issues/34)
+
 ### [2.2.1](https://github.com/tverhoken/stryker-diff-runner/compare/v2.2.0...v2.2.1) (2020-12-01)
 
 ## [2.2.0](https://github.com/tverhoken/stryker-diff-runner/compare/v2.1.0...v2.2.0) (2020-11-23)
