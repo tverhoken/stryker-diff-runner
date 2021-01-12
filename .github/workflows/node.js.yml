@@ -185,6 +185,7 @@ jobs:
           ${{ runner.os }}-
     - run: npm ci
     - run: npm run release
+    - run: git push --follow-tags origin master
     - uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
