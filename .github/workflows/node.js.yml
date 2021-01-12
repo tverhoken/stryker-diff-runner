@@ -127,19 +127,14 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-    - name: Cache artifact
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-artifact
-      with:
-        path: ./dist
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
     - run: npm ci
     - run: npm run build
+    - run: ls -al dist
+    - name: Store production build
+      uses: actions/upload-artifact@v2
+      with:
+          name: dist
+          path: dist
       
   release:
     if: contains(github.ref, 'master') && !contains(github.event.head_commit.message, '[ci skip]')
@@ -172,17 +167,11 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-    - name: Cache artifact
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-artifact
+    - name: Download production build
+      uses: actions/download-artifact@v2
       with:
-        path: ./dist
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+        name: dist
+        path: dist
     - run: npm ci
     - run: npm run release
     - run: git push --follow-tags origin master
