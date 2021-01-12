@@ -172,7 +172,7 @@ jobs:
       with:
         name: dist
     - run: npm ci
-    - run: ls -al dist
+    - run: ls -al
     #- run: npm run release
     #- run: git push --follow-tags origin master
     #- uses: JS-DevTools/npm-publish@v1
