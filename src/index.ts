@@ -20,12 +20,20 @@ export default function run(commandArgs: string[]) {
   }
 
   exec(
-    `git diff origin/${branch || "master"} --name-only | grep -E -v '.*\\.test.*' | grep -e 'src/.*\\.[jt]s'`,
+    `git rev-parse --verify origin/${branch || "master"}`, (error) => {
+      if (error) {
+        console.error(`Stryker-diff-runner:\n\t"origin/${branch || "master"}" branch was not found.\n\tStryker-diff-runner will be aborted.\n`);
+        process.exit(1);
+      }
+    }
+  );
+
+  exec(
+    `git diff origin/${branch || "master"} --name-only | grep -E -v '.*.test.*' | grep -e 'src/.*.[jt]s'`,
     (error, stdout, stderr) => {
       if (error) {
-        console.error(error.message);
-        console.error(stderr);
-        process.exit(1);
+        console.warn('Stryker-diff-runner:\n\tNo files found in the current branch to be mutated.')
+        process.exit(0);
       }
 
       const filesToMutate = stdout.split("\n");
