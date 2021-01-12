@@ -129,6 +129,7 @@ jobs:
           ${{ runner.os }}-
     - run: npm ci
     - run: npm run build
+    - run: ls -al dist
     - name: Cache artifact
       uses: actions/cache@v2
       env:
@@ -184,6 +185,7 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
     - run: npm ci
+    - run: ls -al dist
     #- run: npm run release
     #- run: git push --follow-tags origin master
     #- uses: JS-DevTools/npm-publish@v1
