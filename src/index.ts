@@ -3,6 +3,7 @@ import Stryker from "@stryker-mutator/core";
 import { exec } from "child_process";
 import { join } from "path";
 import { existsSync } from "fs";
+import minimatch from "minimatch";
 
 export default function run(commandArgs: string[]) {
 
@@ -30,7 +31,7 @@ export default function run(commandArgs: string[]) {
 
   exec(
     `git diff origin/${branch || "master"} --name-only | grep -E -v '.*.test.*' | grep -e 'src/.*.[jt]s'`,
-    (error, stdout, stderr) => {
+    (error, stdout) => {
       if (error) {
         console.warn('Stryker-diff-runner:\n\tNo files found in the current branch to be mutated.')
         process.exit(0);
@@ -48,12 +49,8 @@ export default function run(commandArgs: string[]) {
 }
 
 function filterExcludedFilames(fileNames: string[], matchers: string[]) {
-  const exclusionMatchers = matchers
-    .filter((matcher) => matcher[0] === "!")
-    .map((matcher) => matcher.substr(1));
-  return fileNames.filter((fileName) => (
-    exclusionMatchers.every((matcher) => fileName !== matcher)
-  ));
+  const exclusionMatchers = matchers.filter(matcher => matcher[0] === "!").map(matcher => matcher.substr(1));
+  return fileNames.filter(filename => !exclusionMatchers.some(pattern => minimatch(filename, pattern)));
 }
 
 function initConfig(module: any) {
@@ -92,7 +89,7 @@ function applyFilesToMutate(filesToMutate: string[]) {
     const mutate = config.mutate;
     mutate.splice(0, 1);
     const filteredFilesToMutate = filterExcludedFilames(filesToMutate, mutate);
-    return { ...config, mutate: mutate.concat(filteredFilesToMutate) };
+    return { ...config, mutate: filteredFilesToMutate };
   };
 }
 

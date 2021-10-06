@@ -34,14 +34,16 @@
   },
   "homepage": "https://github.com/tverhoken/stryker-diff-runner#readme",
   "peerDependencies": {
-    "@stryker-mutator/core": ">=3.0.0"
+    "@stryker-mutator/core": ">=4.0.0"
   },
   "dependencies": {
     "@stryker-mutator/api": "^4.0.0",
-    "@stryker-mutator/core": "^4.0.0"
+    "@stryker-mutator/core": "^4.0.0",
+    "minimatch": "^3.0.4"
   },
   "devDependencies": {
     "@types/jest": "^26.0.0",
+    "@types/minimatch": "^3.0.5",
     "@types/node": "^14.0.0",
     "coveralls": "^3.0.3",
     "jest": "^26.0.0",
