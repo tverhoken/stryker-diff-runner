@@ -80,7 +80,7 @@ describe("Stryker diff runner", () => {
     expect(consoleSpy).toHaveBeenCalledWith(`Stryker-diff-runner:\n\t"origin/master" branch was not found.\n\tStryker-diff-runner will be aborted.\n`)
   });
 
-  it("should exit with a message that no files will be mutated when there is no changed file in the branch.", () => {
+  it("Should exit with a message that no files will be mutated when there is no changed file in the branch.", () => {
     const exitMock = jest.spyOn(process, "exit").mockImplementation();
     const consoleSpy = jest.spyOn(console, "warn");
 
@@ -168,9 +168,27 @@ describe("Stryker diff runner", () => {
   it('Should exclude files from list diff command that are in the exclusion of the "mutate" config property.', (done) => {
     const fileDiffList = "file1\nfile2\nfile3\n";
     const expectedConfig = {
-      mutate: ["!file3", "file1", "file2"],
+      mutate: ["file1", "file2"],
     };
     jest.spyOn(process, "cwd").mockReturnValue(join(__dirname, "mock-stryker-conf", "mutate-config-with-exclusion"));
+    mockStrykerConstruction(expectedConfig);
+
+    run(["node", "exec"]);
+
+    runFileDiffCommandCallback(null, fileDiffList);
+
+    setTimeout(() => {
+      expect(mockedStrykerInstance.runMutationTest).toHaveBeenCalled();
+      done();
+    });
+  });
+
+  it('Should exclude files from list diff command that are in the exclusion of the "mutate" config property with pattern.', (done) => {
+    const fileDiffList = "file1\nfile2\n/some/path/file3\n";
+    const expectedConfig = {
+      mutate: ["file1", "file2"],
+    };
+    jest.spyOn(process, "cwd").mockReturnValue(join(__dirname, "mock-stryker-conf", "mutate-config-with-exclusion-pattern"));
     mockStrykerConstruction(expectedConfig);
 
     run(["node", "exec"]);
