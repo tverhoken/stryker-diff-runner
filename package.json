@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@stryker-mutator/api": "^4.0.0",
-    "@stryker-mutator/core": "^4.0.0",
+    "@stryker-mutator/core": "^5.6.1",
     "minimatch": "^3.0.4"
   },
   "devDependencies": {
