@@ -1,6 +1,6 @@
 {
   "name": "stryker-diff-runner",
-  "version": "2.3.9",
+  "version": "2.3.10",
   "description": "An utility script that runs Stryker mutation testing on files diff between current git working branch and default one.",
   "main": "dist/index.js",
   "bin": "bin/stryker-diff-runner",
@@ -39,7 +39,7 @@
   "dependencies": {
     "@stryker-mutator/api": "^4.0.0",
     "@stryker-mutator/core": "^4.0.0",
-    "minimatch": "^3.0.4"
+    "minimatch": "^3.0.5"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
