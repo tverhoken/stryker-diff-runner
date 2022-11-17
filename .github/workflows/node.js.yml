@@ -23,6 +23,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: test
+      run: |
+        echo "Test encoding"
+        file -i test.txt
+        cat -A test.txt
     - name: Cache node modules
       uses: actions/cache@v2
       env:
