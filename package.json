@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@stryker-mutator/api": "^4.0.0",
-    "@stryker-mutator/core": "^4.0.0",
-    "minimatch": "^3.0.5"
+    "@stryker-mutator/core": "^8.4.0",
+    "minimatch": "^10.0.2"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
